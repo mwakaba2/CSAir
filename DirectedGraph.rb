@@ -26,6 +26,20 @@ class DirectedGraph
         file.close()
     end
 
+    def merge_json(filename)
+        file = File.open(filename,"r")
+        data = file.read()
+        parsed = JSON.parse(data)
+
+        parsed["metros"].each do |metro|
+            @al.add(metro["name"], metro["country"], metro["continent"], metro["timezone"], metro["coordinates"], metro["population"], metro["region"], metro["code"])
+        end
+
+        parsed["routes"].each do |route|
+            @al.add_edge(route["ports"][0], route["ports"][1], route["distance"])
+        end
+    end
+
     def generate_json()
         newHash = {"data sources" => [
                 "http://www.gcmap.com/" ,
@@ -64,7 +78,6 @@ class DirectedGraph
     end
         
     def list_cities()
-        puts @al.nodes
         @al.nodes_to_s()
     end
 

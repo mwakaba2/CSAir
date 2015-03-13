@@ -26,6 +26,7 @@ class CSAir
 					\nEnter 'save' to save the network disk.
 					\nEnter 'route info' to obtain information about a specific route.
 					\nEnter 'shortest route' to obtain route info of the shortest route of two cities.
+					\nEnter 'merge' to merge new data into the current network
 					\n------------------------------------------"
 	city_instruction = "Enter city name, country, continent, timezone, pop, region, code in order"
 	edit_instruction = "\nEnter 1 to edit city-name
@@ -198,6 +199,13 @@ class CSAir
 			puts "Enter two cities: "
 			cities = gets.chomp
 			@directed_g.shortest_route(cities)
+			puts instruction
+			print prompt
+
+		elsif user_input == "merge"
+			puts "Enter json file name:"
+			input = gets.chomp
+			@directed_g.merge_json(input)
 			puts instruction
 			print prompt
 

@@ -176,6 +176,10 @@ class AdjacencyList
         bool = false
         if(node_city_B.nil?)
             bool = false
+
+        elsif(@edges[node_city_A].nil? or @edges[node_city_B].nil?)
+            bool = false
+
         else
             @edges[node_city_A].each do |edge|
                 if edge.name == node_city_B
@@ -312,13 +316,13 @@ class AdjacencyList
             if continents[node.continent].nil?
                 continents[node.continent] = node.name
             else
-                continents[node.continent] << " ,#{node.name}"
+                continents[node.continent] << ", #{node.name}"
             end
         end && false 
         
         string += "Continents and cities:"
         continents.each do |continent|
-            string+="\n\t#{continent[0]}: #{continent[1]}"
+            string+="\n\n\t#{continent[0]}: \n\t\t#{continent[1]}"
         end
         string
 
