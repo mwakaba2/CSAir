@@ -150,27 +150,26 @@ class DirectedGraph
     end
 
     def edit_city(city, edit_number, edits)
-        edit_number = edit_number.split(' ')
+        #edit_number = edit_number.split(' ')
         i = 0
         edit_number.each do |edit|
             if edit == "1"
-                puts "Editing city name"
-                print city
+                puts "\nEditing city name"
                 @al.set_node_name(city, edits[i])
             elsif edit == "2"
-                puts "Editing country"
+                puts "\nEditing country"
                 @al.set_node_country(city, edits[i])
             elsif edit == "3"
-                puts "Editing timezone"
+                puts "\nEditing timezone"
                 @al.set_node_timezone(city, edits[i])
             elsif edit == "4"
-                puts "Editing coordinates"
+                puts "\nEditing coordinates"
                 @al.set_node_coords(city, edits[i])
             elsif edit == "5"
-                puts "Editing pop"
+                puts "\nEditing pop"
                 @al.set_node_pop(city, edits[i])
             elsif edit == "6"
-                puts "Editing region"
+                puts "\nEditing region"
                 @al.set_node_region(city, edits[i])
             end
             i +=1

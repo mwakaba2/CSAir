@@ -113,12 +113,17 @@ class CSAir
 			puts "Enter city code"
 			city = gets.chomp
 			@directed_g.remove_city(city)
+			puts instruction
+			print prompt
 
 		#remove route
 		elsif user_input == "rm route"
 			puts "Enter route"
 			route = gets.chomp
 			@directed_g.remove_route(route)
+			puts instruction
+			print prompt
+
 
 		elsif user_input == "add city"
 			puts city_instruction
@@ -126,6 +131,9 @@ class CSAir
 			puts "Enter coordinates: "
 			coords = gets.chomp
 			@directed_g.add_city(new_city, coords)
+			puts instruction
+			print prompt
+
 
 		elsif user_input == "add route"
 			puts "Enter city code - city code: "
@@ -174,14 +182,10 @@ class CSAir
 					break
 				end
 			end
-
-			if @directed_g.edit_city(city, edit_number, edits)
-				puts "edit complete!"
-				print prompt	
-			else 
-				puts "edit failed!"
-			  	print prompt
-			end 
+			@directed_g.edit_city(city, edit_number, edits)
+			puts instruction
+			print prompt
+ 
 
 		elsif user_input == "save"
 			@directed_g.generate_json()
